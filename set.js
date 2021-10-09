@@ -17,8 +17,4 @@ console.log(set.has(2))
 
 console.log(set.entries())
 
-for (let key of set) {
-    console.log(key)
-}
-
 
