@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function (){
+            $('#updateUsername').submit(function (){
+
+                $.ajax({
+                    url: '/api/employees',
+                    type:'POST',
+                    dataType: 'json',
+                    data: $('#updateUsername').serialize(),
+                    success: function (data){
+                        if (data.isValid){
+                            $('#displayName').html('Your name is: ' + data.username);
+                            $('#displayName').slideDown(500);
+                        } else {
+                            alert('Please enter a valid username!1');
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
 
+
+<form id="updateUsername">
+    Name <input type="text" id="username" name="username">
+    <input type="submit">
+    <br>
+</form>
+
+<p id="displayName"></p>
+<br>
 <!--<h1 id="hello">Hello World!</h1>-->
 <!--<h2 class="h2-class" id="h2-id">This is Heading h2</h2>-->
 
@@ -14,6 +45,7 @@
 <div id="box1"></div>
 <div id="box2"></div>
 <div id="circle"></div>
-<script src="fetch.js"></script>
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+<!--<script src="ajaxFirstPart.js"></script>-->
 </body>
 </html>
